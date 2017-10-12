@@ -50,4 +50,43 @@ const reConstructBinaryTree = (preTree, vinTree) => {
 	}
 }
 
-console.log(reConstructBinaryTree([1,2,4,7,3,5,6,8],[4,7,2,1,5,3,8,6]));
+// console.log(reConstructBinaryTree([1,2,4,7,3,5,6,8],[4,7,2,1,5,3,8,6]));
+
+// 4、大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项。n<=39
+const Fibonacci = (n) => {
+	let val = []
+	if(n <= 0){
+		return 0
+	}else if(0 < n && n <= 2){
+		return 1
+	}else{
+		val[1] = 1 // n为2
+		val[2] = 2 // n为3
+		for(let i = 3; i < n; i++){
+			val[i] = val[i-1] + val[i-2]
+		}
+		return val[n-1]
+	}
+}
+//console.log(Fibonacci(10))
+// 5、一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法。
+const jumpFloor = (num) => {
+	if(num === 1){
+		return 1
+	}
+	if(num === 2){
+		return 2
+	}
+
+	let m = 1
+	let n = 2
+	while(num > 2){
+		let temp = n
+		n = n + m
+		m = temp
+		num--
+	}
+	return n
+}
+
+console.log(jumpFloor(10))
